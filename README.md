@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Running the application
 
-## Available Scripts
+```bash
+# install packages
+npm install
 
-In the project directory, you can run:
+npm start
+```
 
-### `npm start`
+### Versioning
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Specify type of commit
+- build: build related changes
+- chore: a code change that external users wont see
+- feat: a new feature
+- fix: bug fix
+- refactor: bug fix that adds new feature
+- docs: documentation related
+- style: UI related
+- test: related to testings
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Versioning Tools
+- [`Git Flow`](https://danielkummer.github.io/git-flow-cheatsheet/)
 
-### `npm test`
+### Versioning Categories
+1. MAJOR - when creating new phases of a project
+2. MINOR/RELEASE - functionality in a backward compatible manner such as requests.
+3. PATCH/HOTFIX - bug fix related
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# using git flow
+git clone https://github.com/nhardbalansag/dcode-pos-portal.git
 
-### `npm run build`
+git flow init
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# accept all default configurations by clicking enter then it will redirect you to the develop branch
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Before checking out to a new branch for a release version, execute this first to know the current tag in the master branch
+git describe --tags --abbrev=0 master
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# for features update
+git flow feature start 1.0.0
 
-### `npm run eject`
+# for hotfix update
+git flow hotfix start 1.0.0
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+git add . / your specific update
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+git commit -m "commit message"
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+git push origin HEAD / current branch name
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+git flow feature finish or git flow hotfix finish
 
-## Learn More
+git push origin develop
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# After pushing to the develop branch, go to the repository and create a pull request from the develop branch to master master branch
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+git checkout master
 
-### Code Splitting
+git pull origin master
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Add release tag version
+git tag -a v1.1.0
 
-### Analyzing the Bundle Size
+# bash will show then remove the comment by pressing x on your keyboard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# to add the tag in the master branch
+git push origin master --tags
 
-### Making a Progressive Web App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Generating a release
 
-### Advanced Configuration
+### Debugging
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
 
-### Deployment
+rm -rf node_modules
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+rm -rf package-lock.json
 
-### `npm run build` fails to minify
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm start
+
+```
+
+### Update Deployment
