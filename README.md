@@ -2,11 +2,10 @@
 
 ## Current Version
 
-app version     : 1.0.0
-react version   : 18.2.0
-npm version     : 10.2.3
-node js version : 20.10.0
-
+- app version     : 1.0.0
+- react version   : 18.2.0
+- npm version     : 10.2.3
+- node js version : 20.10.0
 
 ## Running the application
 
