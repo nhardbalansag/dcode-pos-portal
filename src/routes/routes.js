@@ -1,14 +1,20 @@
 import {
     createBrowserRouter,
     RouterProvider,
-    useLoaderData,
 } from "react-router-dom";
 
 import {
     Login,
     MainIndex,
     Products,
-    NotFound
+    NotFound,
+    DashboardPage,
+    StoresPage,
+    CrewPage,
+    ExpensesPage,
+    PaymentPage,
+    CashLedger,
+    TransactionPage
 } from '../pages/_index'
 
 const router = createBrowserRouter([
@@ -24,8 +30,36 @@ const router = createBrowserRouter([
         Component: MainIndex,  
         children:[
             {
+                path: "",
+                element: <DashboardPage />,
+            },
+            {
                 path: "products",
                 element: <Products />,
+            },
+            {
+                path: "stores",
+                element: <StoresPage />,
+            },
+            {
+                path: "crews",
+                element: <CrewPage />,
+            },
+            {
+                path: "expenses",
+                element: <ExpensesPage />,
+            },
+            {
+                path: "payment",
+                element: <PaymentPage />,
+            },
+            {
+                path: "cash",
+                element: <CashLedger />,
+            },
+            {
+                path: "transactions",
+                element: <TransactionPage />,
             },
         ]
     },
