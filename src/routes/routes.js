@@ -46,16 +46,25 @@ const router = createBrowserRouter([
                 element: <CrewPage />,
             },
             {
-                path: "expenses",
-                element: <ExpensesPage />,
-            },
-            {
-                path: "payment",
-                element: <PaymentPage />,
-            },
-            {
-                path: "cash",
-                element: <CashLedger />,
+                path: "accounting",
+                children:[
+                    {
+                        path: "",
+                        element: <ExpensesPage />,
+                    },
+                    {
+                        path: "expenses",
+                        element: <ExpensesPage />,
+                    },
+                    {
+                        path: "payment",
+                        element: <PaymentPage />,
+                    },
+                    {
+                        path: "cash",
+                        element: <CashLedger />,
+                    },
+                ]
             },
             {
                 path: "transactions",

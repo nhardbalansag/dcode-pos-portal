@@ -31,9 +31,16 @@ const MainIndex = () => {
               <DrawerItemComp route='/portal/stores' itemTitle='stores'/>
               <DrawerItemComp route='/portal/crews' itemTitle='crews'/>
               <DrawerItemComp route='/portal/transactions' itemTitle='transactions'/>
-              <DrawerItemComp route='/portal/expenses' itemTitle='expenses ledger'/>
-              <DrawerItemComp route='/portal/payment' itemTitle='payment ledger'/>
-              <DrawerItemComp route='/portal/cash' itemTitle='cash ledger'/>
+              <DrawerItemComp 
+              route='/portal/cash' 
+              itemTitle='accounting' 
+              innerRoutes={
+                [
+                  {path: '/portal/accounting/expenses', title: 'expenses ledger'},
+                  {path: '/portal/accounting/payment', title: 'payment ledger'},
+                  {path: '/portal/accounting/cash', title: 'cash ledger'},
+                ]
+              }/>
             </ul>
           </div>
         </div>
