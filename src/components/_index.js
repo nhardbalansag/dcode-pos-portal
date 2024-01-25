@@ -3,6 +3,8 @@ import ButtonComp from "./ButtonComp";
 import CardComp from "./CardComp";
 import NavigationBar from "./NavigationBar";
 import DrawerItemComp from "./DrawerItemComp";
+import LineChart from "./LineChart";
+import DashboardTotalCardContent from "./DashboardTotalCardContent";
 
 export {
     InputComp,
@@ -10,4 +12,6 @@ export {
     CardComp,
     NavigationBar,
     DrawerItemComp,
+    LineChart,
+    DashboardTotalCardContent
 }

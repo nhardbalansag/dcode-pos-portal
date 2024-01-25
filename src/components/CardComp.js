@@ -1,18 +1,23 @@
 import React from 'react'
 
-export default function CardComp({children, title = "", titleBadge = null}) {
+export default function CardComp({children, title = "", titleBadge = null, width = "p-8 m-5 w-96 shadow-xl"}) {
   return (
-    <div className='p-8 m-5 card w-96 bg-base-100 shadow-xl'>
+    <div className={`card ${width} bg-base-100 `}>
         <div className="card-body">
-            <h2 className="card-title">
-                {title}
-                {
-                    titleBadge 
-                    ? <div className="badge badge-secondary">{titleBadge}</div>
-                    : <></>
-                }
-            </h2>
-            {children}
+          {
+            title
+            ?
+              <h2 className="card-title">
+                  {title}
+                  {
+                      titleBadge 
+                      ? <div className="badge badge-secondary">{titleBadge}</div>
+                      : <></>
+                  }
+              </h2>
+            : <></>
+          }
+          {children}
         </div>
     </div>
   )

@@ -18,8 +18,10 @@ const MainIndex = () => {
           <div className="drawer-content">
             <NavigationBar/>
             {/* navigation pages */}
-            <div>
-              <Outlet />
+            <div className=''>
+              <div className='w-11/12 mx-auto'>
+                <Outlet />
+              </div>
             </div>
           </div> 
           <div className="drawer-side">
