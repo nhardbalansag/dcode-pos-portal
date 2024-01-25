@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 
 import { Link } from "react-router-dom";
 
+import {
+  IconMinusSwapOff,
+  IconPlusSwapOn
+} from '../icons/_index'
+
 export default function DrawerItemComp({itemTitle = "title 1", route = '/', innerRoutes = []}) {
   
   const [getToggle, setToggle] = useState(false)
@@ -39,13 +44,8 @@ export default function DrawerItemComp({itemTitle = "title 1", route = '/', inne
                   <div>
                     <label className="swap swap-rotate" >
                       <input type="checkbox" />
-                      <svg onClick={() => triggerToggle()} className='swap-off w-6 h-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                      </svg>
-
-                      <svg onClick={() => triggerToggle()} className='swap-on w-6 h-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
-                      </svg>
+                      <IconPlusSwapOn onclick={() => triggerToggle()}/>
+                      <IconMinusSwapOff onclick={() => triggerToggle()}/>
                     </label>
                   </div>
                 </div>
