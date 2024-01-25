@@ -16,7 +16,7 @@ export default function NavigationBar({brandTitle = "DCODE"}) {
                 <li>
                     <details>
                         <summary>
-                            Parent
+                            Action
                         </summary>
                         <ul className="p-2 bg-base-100 rounded-t-none">
                             <li><a>Logout</a></li>
