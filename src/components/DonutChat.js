@@ -28,20 +28,20 @@ export default function DonutChart() {
     );
 
     const data = {
-        labels: ['Red', 'Blue', 'Yellow'],
+        labels: ['Cash', 'Payment', 'Expenses'],
         datasets: [
           {
-            label: '# of Votes',
-            data: [12, 19, 3],
+            label: 'Current ledger total ₱',
+            data: [2000, 870, 1200],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
+              'rgba(238, 140, 33, 1)',
+              'rgba(238, 140, 33, .7)',
+              'rgba(238, 140, 33, 0.4)',
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
+              'rgba(238, 140, 33, 1)',
+              'rgba(238, 140, 33, 0.7)',
+              'rgba(238, 140, 33, 0.4)',
             ],
             borderWidth: 1,
           },

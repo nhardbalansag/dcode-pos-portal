@@ -15,7 +15,7 @@ const DashboardPage = () => {
     <div>
         <div className="mx-auto max-w-2xl lg:mx-0 my-5">
           <h2 className="text-3xl font-bold tracking-tight text-dark">Dashboard</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-400">Anim aute id magna aliqua ad ad non deserunt sunt.</p>
+          <p className="mt-6 text-lg leading-8 text-gray-400">Here's whats happening with your stores today.</p>
         </div>
         <div className="my-5 grid grid-rows-4 grid-flow-col md:justify-between justify-evenly sm:grid-rows-2 md:grid-rows-1">
           <div className="stats shadow">
@@ -27,7 +27,7 @@ const DashboardPage = () => {
                 </svg>
               </div>
               <div className="stat-title">Total Sales</div>
-              <div className="stat-value text-secondary">31K</div>
+              <div className="stat-value text-secondary">30K</div>
               <div className="stat-desc text-secondary">↗︎ 400 (22%)</div>
             </div>
           </div>
@@ -39,7 +39,7 @@ const DashboardPage = () => {
                 </svg>
               </div>
               <div className="stat-title">Total Orders</div>
-              <div className="stat-value">31K</div>
+              <div className="stat-value">26K</div>
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
@@ -51,7 +51,7 @@ const DashboardPage = () => {
                 </svg>
               </div>
               <div className="stat-title">New Sales</div>
-              <div className="stat-value">31K</div>
+              <div className="stat-value">8K</div>
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
@@ -63,7 +63,7 @@ const DashboardPage = () => {
                 </svg>
               </div>
               <div className="stat-title">Total Products</div>
-              <div className="stat-value">31K</div>
+              <div className="stat-value">20</div>
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
@@ -75,7 +75,7 @@ const DashboardPage = () => {
                 </svg>
               </div>
               <div className="stat-title">Total Stores</div>
-              <div className="stat-value">31K</div>
+              <div className="stat-value">3</div>
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
@@ -93,11 +93,10 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className='shadow-lg p-3'>
+        <div className='shadow-lg p-3 my-5'>
           <h2 className="text-2xl font-bold tracking-tight text-dark h-1/5">Top Sales</h2>
           <DaisyTable/>
         </div>
-        
     </div>
   )
 }

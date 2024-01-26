@@ -48,12 +48,12 @@ export default function LineChart({data = []}) {
         labels,
         datasets: [
           {
-            label: 'Dataset 1',
+            label: '₱ Total Sales',
             data: data,
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-            pointBorderColor: 'rgba(75, 192, 192, 1)',
+            borderColor: 'rgba(238, 140, 33, 1)',
+            backgroundColor: 'rgba(238, 140, 33, 0.1)',
+            pointBackgroundColor: 'rgba(238, 140, 33, 1)',
+            pointBorderColor: 'rgba(238, 140, 33, 1)',
             pointRadius: 6,
             pointHoverRadius: 8,
             pointStyle: 'rectRounded',
@@ -73,7 +73,7 @@ export default function LineChart({data = []}) {
             },
             title: {
                 display: true,
-                text: 'Chart.js Line Chart',
+                text: 'Monthly total sales overview.',
             },
         },
         scales: {

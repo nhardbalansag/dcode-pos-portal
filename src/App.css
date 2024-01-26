@@ -6,6 +6,10 @@
 .bordered{
     border: 1px solid red;
 }
+
+.theme-primary{
+    background-color: #262930;
+}
   
 .App-header {
     background-color: #282c34;
