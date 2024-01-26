@@ -11,7 +11,7 @@ export default function DashboardTotalCardContent({isPositive = true}) {
     <div>
         <div className='flex justify-start items-center'>
             <div className="avatar placeholder mr-3">
-                <div className="bg-neutral text-neutral-content rounded-full w-12">
+                <div className="bg-gray-200 text-dark-content rounded-full w-8">
                     <span>SY</span>
                 </div>
             </div> 

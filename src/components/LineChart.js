@@ -10,22 +10,24 @@ import {
     Tooltip,
     Legend,
     Filler,
+    ArcElement
 } from 'chart.js';
   
 import { Line } from 'react-chartjs-2';
 
 export default function LineChart({data = []}) {
 
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        PointElement,
-        LineElement,
-        Title,
-        Tooltip,
-        Legend,
-        Filler
-    );
+        ChartJS.register(
+            CategoryScale,
+            LinearScale,
+            PointElement,
+            LineElement,
+            Title,
+            Tooltip,
+            Legend,
+            Filler,
+            ArcElement
+        );
 
     const generateMonthsArray = () => {
         const months = [];
@@ -33,7 +35,7 @@ export default function LineChart({data = []}) {
       
         for (let i = 0; i < 12; i++) {
           const month = new Date(currentDate.getFullYear(), i, 1);
-          const monthName = month.toLocaleString('default', { month: 'long' });
+          const monthName = month.toLocaleString('default', { month: 'short' });
           months.push(monthName);
         }
       

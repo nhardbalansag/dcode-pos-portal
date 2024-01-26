@@ -5,6 +5,8 @@ import NavigationBar from "./NavigationBar";
 import DrawerItemComp from "./DrawerItemComp";
 import LineChart from "./LineChart";
 import DashboardTotalCardContent from "./DashboardTotalCardContent";
+import DonutChart from "./DonutChat";
+import DaisyTable from "./DaisyTable";
 
 export {
     InputComp,
@@ -13,5 +15,7 @@ export {
     NavigationBar,
     DrawerItemComp,
     LineChart,
-    DashboardTotalCardContent
+    DashboardTotalCardContent,
+    DonutChart,
+    DaisyTable
 }
