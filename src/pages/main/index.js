@@ -26,10 +26,19 @@ const MainIndex = () => {
           </div> 
           <div className="drawer-side">
             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <ul className="min-h-full p-4 menu w-80 bg-base-200 text-base-content">
               {/* Sidebar content here */}
               <DrawerItemComp route='/portal' itemTitle='dashboard'/>
               <DrawerItemComp route='/portal/products' itemTitle='products'/>
+              <DrawerItemComp 
+              route='/portal/products' 
+              itemTitle='products' 
+              innerRoutes={
+                [
+                  {path: '/portal/products', title: 'categories'},
+                  {path: '/portal/products', title: 'products'}
+                ]
+              }/>
               <DrawerItemComp route='/portal/stores' itemTitle='stores'/>
               <DrawerItemComp route='/portal/crews' itemTitle='crews'/>
               <DrawerItemComp route='/portal/transactions' itemTitle='transactions'/>
