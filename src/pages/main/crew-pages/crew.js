@@ -7,23 +7,28 @@ import {
   ButtonComp,
   DonutChart,
   DaisyTable
-} from '../../components/_index'
+} from '../../../components/_index'
 
 import {
   IconTableList,
   IconMinusSwapOff,
   IconTrashCan,
   IconEdit
-} from '../../icons/_index'
+} from '../../../icons/_index'
 
-const TransactionPage = () => {
+const CrewPage = () => {
 
   const _title = () =>{
     return(
       <div className='flex flex-row items-center justify-between w-full'>
         <div className='flex flex-row items-center'>
           <IconTableList/> 
-          <p className='ml-2'>Transaction List</p>
+          <p className='ml-2'>Crew List</p>
+        </div>
+        <div>
+          <Link to={'add-crew'}>
+            <ButtonComp title={<><IconMinusSwapOff classname='text-white'/> <p className='text-white'>Add Crew</p></>} className='bg-green-800'/>
+          </Link>
         </div>
       </div>
     )
@@ -31,13 +36,6 @@ const TransactionPage = () => {
 
   return (
     <div>
-      <div className="flex flex-row justify-between mx-auto my-5 lg:mx-0">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-dark">Transactions</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-400">Manage all store transactions</p>
-          </div>
-        </div>
-        
         <div className='p-3 my-5 shadow-lg'>
           <CardComp 
             width='w-full' 
@@ -58,4 +56,4 @@ const TransactionPage = () => {
   )
 }
 
-export default TransactionPage
+export default CrewPage

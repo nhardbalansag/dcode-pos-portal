@@ -9,7 +9,6 @@ import {
     Products,
     NotFound,
     DashboardPage,
-    CrewPage,
     ExpensesPage,
     PaymentPage,
     CashLedger,
@@ -21,7 +20,10 @@ import {
     AddProductCategory,
     StoreIndex,
     AddStore,
-    Stores
+    Stores,
+    CrewIndex,
+    CrewPage,
+    AddCrew
 } from '../pages/_index'
 
 const router = createBrowserRouter([
@@ -84,7 +86,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "crews",
-                element: <CrewPage />,
+                Component: CrewIndex,
+                children:[
+                    {   
+                        path:"",
+                        element: <CrewPage/>
+                    },
+                    {   
+                        path:"add-crew",
+                        element: <AddCrew/>,
+                    }
+                ]
             },
             {
                 path: "accounting",

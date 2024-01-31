@@ -9,6 +9,7 @@ import IconEdit from './IconEdit'
 import IconCancel from "./IconCancel";
 import IconShoppingBag from "./IconShoppingBag";
 import IconStore from "./IconStore";
+import IconUserGroup from "./IconUserGroup"
 
 
 // https://heroicons.com/
@@ -24,5 +25,6 @@ export {
     IconEdit,
     IconCancel,
     IconShoppingBag,
-    IconStore
+    IconStore,
+    IconUserGroup
 }

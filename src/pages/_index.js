@@ -3,7 +3,6 @@ import MainIndex from './main/index'
 import Products from './main/products-pages/products'
 import NotFound from './partials/not-found'
 import DashboardPage from './main/dashboard'
-import CrewPage from './main/crew'
 import ExpensesPage from './main/expenses'
 import PaymentPage from './main/payment'
 import CashLedger from './main/cash'
@@ -16,6 +15,9 @@ import AddProductCategory from './main/product-categories-pages/add-product-cate
 import StoreIndex from './main/store-pages/store-index'
 import AddStore from './main/store-pages/add-store'
 import Stores from './main/store-pages/stores'
+import CrewIndex from './main/crew-pages/crew-index'
+import CrewPage from './main/crew-pages/crew'
+import AddCrew from './main/crew-pages/add-crew'
 
 export {
     Login,
@@ -23,7 +25,6 @@ export {
     Products,
     NotFound,
     DashboardPage,
-    CrewPage,
     ExpensesPage,
     PaymentPage,
     CashLedger,
@@ -35,5 +36,8 @@ export {
     AddProductCategory,
     StoreIndex,
     AddStore,
-    Stores
+    Stores,
+    CrewIndex,
+    CrewPage,
+    AddCrew
 }
