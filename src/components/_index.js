@@ -7,6 +7,7 @@ import LineChart from "./LineChart";
 import DashboardTotalCardContent from "./DashboardTotalCardContent";
 import DonutChart from "./DonutChat";
 import DaisyTable from "./DaisyTable";
+import SelectComp from "./SelectComp";
 
 export {
     InputComp,
@@ -17,5 +18,6 @@ export {
     LineChart,
     DashboardTotalCardContent,
     DonutChart,
-    DaisyTable
+    DaisyTable,
+    SelectComp
 }

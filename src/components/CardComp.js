@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function CardComp({children, title = "", titleBadge = null, width = "p-8 m-5 w-96 shadow-xl"}) {
+export default function CardComp({children, titleClassname = '', title = <></>, titleBadge = null, width = "p-8 m-5 w-96 shadow-xl"}) {
   return (
     <div className={`card ${width} bg-base-100 `}>
         <div className="card-body">
           {
             title
             ?
-              <h2 className="card-title">
+              <h2 className={`card-title ${titleClassname}`}>
                   {title}
                   {
                       titleBadge 

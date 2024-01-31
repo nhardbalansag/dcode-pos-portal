@@ -35,7 +35,7 @@ const MainIndex = () => {
               itemTitle='products' 
               innerRoutes={
                 [
-                  {path: '/portal/products', title: 'categories'},
+                  {path: '/portal/categories', title: 'categories'},
                   {path: '/portal/products', title: 'products'}
                 ]
               }/>

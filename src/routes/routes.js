@@ -14,7 +14,12 @@ import {
     ExpensesPage,
     PaymentPage,
     CashLedger,
-    TransactionPage
+    TransactionPage,
+    AddProduct,
+    ProductIndex,
+    CategoryIndex,
+    Categories,
+    AddProductCategory
 } from '../pages/_index'
 
 const router = createBrowserRouter([
@@ -34,8 +39,32 @@ const router = createBrowserRouter([
                 element: <DashboardPage />,
             },
             {
+                path: "categories",
+                Component: CategoryIndex,
+                children:[
+                    {   
+                        path:"",
+                        element: <Categories/>
+                    },
+                    {   
+                        path:"add-category",
+                        element: <AddProductCategory/>,
+                    }
+                ]
+            },
+            {
                 path: "products",
-                element: <Products />,
+                Component: ProductIndex,
+                children:[
+                    {   
+                        path:"",
+                        element: <Products/>
+                    },
+                    {   
+                        path:"add-product",
+                        element: <AddProduct/>,
+                    }
+                ]
             },
             {
                 path: "stores",
