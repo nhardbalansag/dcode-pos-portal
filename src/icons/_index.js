@@ -8,6 +8,7 @@ import IconTrashCan from './IconTrashCan';
 import IconEdit from './IconEdit'
 import IconCancel from "./IconCancel";
 import IconShoppingBag from "./IconShoppingBag";
+import IconStore from "./IconStore";
 
 
 // https://heroicons.com/
@@ -22,5 +23,6 @@ export {
     IconTrashCan,
     IconEdit,
     IconCancel,
-    IconShoppingBag
+    IconShoppingBag,
+    IconStore
 }

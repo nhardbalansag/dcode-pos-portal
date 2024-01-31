@@ -29,7 +29,6 @@ const MainIndex = () => {
             <ul className="min-h-full p-4 menu w-80 bg-base-200 text-base-content">
               {/* Sidebar content here */}
               <DrawerItemComp route='/portal' itemTitle='dashboard'/>
-              <DrawerItemComp route='/portal/products' itemTitle='products'/>
               <DrawerItemComp 
               route='/portal/products' 
               itemTitle='products' 

@@ -9,7 +9,6 @@ import {
     Products,
     NotFound,
     DashboardPage,
-    StoresPage,
     CrewPage,
     ExpensesPage,
     PaymentPage,
@@ -19,7 +18,10 @@ import {
     ProductIndex,
     CategoryIndex,
     Categories,
-    AddProductCategory
+    AddProductCategory,
+    StoreIndex,
+    AddStore,
+    Stores
 } from '../pages/_index'
 
 const router = createBrowserRouter([
@@ -68,7 +70,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "stores",
-                element: <StoresPage />,
+                Component: StoreIndex,
+                children:[
+                    {   
+                        path:"",
+                        element: <Stores/>
+                    },
+                    {   
+                        path:"add-store",
+                        element: <AddStore/>,
+                    }
+                ]
             },
             {
                 path: "crews",
