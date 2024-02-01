@@ -9,6 +9,7 @@ import DonutChart from "./DonutChat";
 import DaisyTable from "./DaisyTable";
 import SelectComp from "./SelectComp";
 import PageHeaderTitle from "./PageHeaderTitle";
+import PageWrapper from "./PageWrapper";
 
 export {
     InputComp,
@@ -21,5 +22,6 @@ export {
     DonutChart,
     DaisyTable,
     SelectComp,
-    PageHeaderTitle
+    PageHeaderTitle,
+    PageWrapper
 }

@@ -4,7 +4,8 @@ import {
   CardComp,
   LineChart,
   DonutChart,
-  DaisyTable
+  DaisyTable,
+  PageWrapper
 } from '../../components/_index'
 
 const DashboardPage = () => {
@@ -13,12 +14,9 @@ const DashboardPage = () => {
 
   return (
     <div>
-        <div className="mx-auto max-w-2xl lg:mx-0 my-5">
-          <h2 className="text-3xl font-bold tracking-tight text-dark">Dashboard</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-400">Here's whats happening with your stores today.</p>
-        </div>
-        <div className="my-5 grid grid-rows-4 grid-flow-col md:justify-between justify-evenly sm:grid-rows-2 md:grid-rows-1">
-          <div className="stats shadow">
+      <PageWrapper heading='Dashboard' caption="Here's whats happening with your stores today.">
+        <div className="grid grid-flow-col grid-rows-4 my-5 md:justify-between justify-evenly sm:grid-rows-2 md:grid-rows-1">
+          <div className="shadow stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
@@ -31,7 +29,7 @@ const DashboardPage = () => {
               <div className="stat-desc text-secondary">↗︎ 400 (22%)</div>
             </div>
           </div>
-          <div className="stats shadow">
+          <div className="shadow stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
@@ -43,7 +41,7 @@ const DashboardPage = () => {
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
-          <div className="stats shadow">
+          <div className="shadow stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-8 h-8">
@@ -55,7 +53,7 @@ const DashboardPage = () => {
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
-          <div className="stats shadow">
+          <div className="shadow stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-8 h-8">
@@ -67,7 +65,7 @@ const DashboardPage = () => {
               <div className="stat-desc">↘︎ 90 (14%)</div>
             </div>
           </div>
-          <div className="stats shadow">
+          <div className="shadow stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-8 h-8">
@@ -80,23 +78,24 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className='my-5 flex flex-row items-stretch'>
-          <div className='w-full shadow-lg p-3'>
+        <div className='flex flex-row items-stretch my-5'>
+          <div className='w-full p-3 shadow-lg'>
             <h2 className="text-2xl font-bold tracking-tight text-dark">Sales Overview</h2>
             <LineChart data={data}/>
           </div>
        
-          <div className='w-1/5 shadow-lg ml-3 p-3'>
+          <div className='w-1/5 p-3 ml-3 shadow-lg'>
             <h2 className="text-2xl font-bold tracking-tight text-dark h-1/5">Ledgers</h2>
             <div className='h-fit'>
               <DonutChart/>
             </div>
           </div>
         </div>
-        <div className='shadow-lg p-3 my-5'>
+        <div className='p-3 my-5 shadow-lg'>
           <h2 className="text-2xl font-bold tracking-tight text-dark h-1/5">Top Sales</h2>
           <DaisyTable/>
         </div>
+      </PageWrapper>
     </div>
   )
 }
