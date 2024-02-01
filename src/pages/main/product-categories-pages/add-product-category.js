@@ -4,7 +4,8 @@ import {
   InputComp,
   SelectComp,
   ButtonComp,
-  CardComp
+  CardComp,
+  PageHeaderTitle
 } from '../../../components/_index'
 
 import {
@@ -14,20 +15,16 @@ import {
 
 const AddProductCategory = () => {
 
-  const _title = () =>{
-    return(
-      <div className='flex flex-row items-center justify-between w-full'>
-        <div className='flex flex-row items-center'>
-          <IconTableList classname='text-black'/> 
-          <p className='ml-2'>Create New Product Category</p>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div>
-      <CardComp title={_title()} width='mb-3 w-full shadow-xl'>
+      <CardComp 
+      title={
+        <PageHeaderTitle 
+        icon={<IconTableList classname='text-black'/> }
+        title='Create New Product Category'
+        />
+      } 
+      width='mb-3 w-full shadow-xl'>
         <form>
           <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">

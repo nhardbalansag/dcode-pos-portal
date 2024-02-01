@@ -4,7 +4,8 @@ import {
   InputComp,
   SelectComp,
   ButtonComp,
-  CardComp
+  CardComp,
+  PageHeaderTitle
 } from '../../../components/_index'
 
 import {
@@ -14,20 +15,17 @@ import {
 
 const AddCrew = () => {
 
-  const _title = () =>{
-    return(
-      <div className='flex flex-row items-center justify-between w-full'>
-        <div className='flex flex-row items-center'>
-          <IconUserGroup classname='text-black'/> 
-          <p className='ml-2'>Create New Crew Member</p>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div>
-      <CardComp title={_title()} width='p-8 mb-3 w-full shadow-xl'>
+      <CardComp 
+        title={
+          <PageHeaderTitle 
+          icon={<IconUserGroup classname='text-black'/> }
+          title='Create New Crew Member'
+          />
+        } 
+        width='p-8 mb-3 w-full shadow-xl'
+      >
         <form>
           <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">

@@ -5,41 +5,32 @@ import { Link } from "react-router-dom";
 import {
   CardComp,
   ButtonComp,
-  DonutChart,
+  PageHeaderTitle,
   DaisyTable
 } from '../../../components/_index'
 
 import {
   IconTableList,
-  IconMinusSwapOff,
   IconTrashCan,
   IconEdit
 } from '../../../icons/_index'
 
 const Products = () => {
 
-  const _title = () =>{
-    return(
-      <div className='flex flex-row items-center justify-between w-full'>
-        <div className='flex flex-row items-center'>
-          <IconTableList/> 
-          <p className='ml-2'>Product List</p>
-        </div>
-        <div>
-          <Link to={'add-product'}>
-            <ButtonComp title={<><IconMinusSwapOff classname='text-white'/> <p className='text-white'>Add Product</p></>} className='bg-green-800'/>
-          </Link>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div>
         <div className='p-3 my-5 shadow-lg'>
           <CardComp 
             width='w-full' 
-            title={_title()} 
+            title={
+              <PageHeaderTitle 
+              icon={<IconTableList/> }
+              title='Product List'
+              rightComponent={true}
+              path='add-product'
+              buttonTitle='Add Product'
+              />
+            } 
             children={
               <DaisyTable 
                 enableButton={true} 

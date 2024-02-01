@@ -8,6 +8,7 @@ import DashboardTotalCardContent from "./DashboardTotalCardContent";
 import DonutChart from "./DonutChat";
 import DaisyTable from "./DaisyTable";
 import SelectComp from "./SelectComp";
+import PageHeaderTitle from "./PageHeaderTitle";
 
 export {
     InputComp,
@@ -19,5 +20,6 @@ export {
     DashboardTotalCardContent,
     DonutChart,
     DaisyTable,
-    SelectComp
+    SelectComp,
+    PageHeaderTitle
 }
