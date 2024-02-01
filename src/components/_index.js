@@ -10,6 +10,7 @@ import DaisyTable from "./DaisyTable";
 import SelectComp from "./SelectComp";
 import PageHeaderTitle from "./PageHeaderTitle";
 import PageWrapper from "./PageWrapper";
+import DashboardStatusCard from "./DashboardStatusCard";
 
 export {
     InputComp,
@@ -23,5 +24,6 @@ export {
     DaisyTable,
     SelectComp,
     PageHeaderTitle,
-    PageWrapper
+    PageWrapper,
+    DashboardStatusCard
 }

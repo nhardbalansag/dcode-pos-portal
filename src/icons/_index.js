@@ -10,6 +10,9 @@ import IconCancel from "./IconCancel";
 import IconShoppingBag from "./IconShoppingBag";
 import IconStore from "./IconStore";
 import IconUserGroup from "./IconUserGroup"
+import IconPriceTag from "./IconPriceTag";
+import IconPushCart from "./IconPushCart";
+import IconReceipt from "./IconReceipt";
 
 
 // https://heroicons.com/
@@ -26,5 +29,8 @@ export {
     IconCancel,
     IconShoppingBag,
     IconStore,
-    IconUserGroup
+    IconUserGroup,
+    IconPriceTag,
+    IconPushCart,
+    IconReceipt
 }
