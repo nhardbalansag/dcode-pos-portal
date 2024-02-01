@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   InputComp,
@@ -6,7 +6,27 @@ import {
   CardComp
 } from '../../components/_index'
 
+import * as auth from '../../middleware/auth/auth.api'
+
 const Login = () => {
+
+  const LoginUser = async () =>{
+
+    const requestBody = {
+      "username": "nhard",
+      "password": "helloworld"
+    }
+
+    await auth.LoginUser(requestBody).then((result) =>{
+      console.log(result)
+    }).catch((err) =>{
+      console.log(err)
+    })
+  }
+
+  useEffect(() =>{
+    LoginUser()
+  },[]) 
 
   const _form = () =>{
     return(
