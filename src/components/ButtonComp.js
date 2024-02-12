@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function ButtonComp({title = "button", className = "btn-primary"}) {
+export default function ButtonComp({onPress = () => console.log("hello world") , title = "button", className = "btn-primary"}) {
   return (
-    <button className={`btn btn-active ${className} capitalize`}>{title}</button>
+    <button onClick={onPress} className={`btn btn-active ${className} capitalize`}>{title}</button>
   )
 }

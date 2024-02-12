@@ -3,6 +3,9 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
+import {useSelector} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import {
     Login,
     MainIndex,
@@ -26,7 +29,7 @@ import {
     AddCrew
 } from '../pages/_index'
 
-const router = createBrowserRouter([
+const auth_router = createBrowserRouter([
     {
         path: "/",
         index:true,
@@ -34,7 +37,15 @@ const router = createBrowserRouter([
         Component: Login
     },
     {
-        path: "/portal",
+        path:"*",
+        loader: () => ({ message: "Route not found!" }),
+        Component: NotFound,
+    },
+])
+
+const router = createBrowserRouter([
+    {
+        path: "/",
         loader: () => ({ message: "Hello Data Router!" }),
         Component: MainIndex,  
         children:[
@@ -50,7 +61,7 @@ const router = createBrowserRouter([
                         path:"",
                         element: <Categories/>
                     },
-                    {   
+                    {
                         path:"add-category",
                         element: <AddProductCategory/>,
                     }
@@ -133,7 +144,16 @@ const router = createBrowserRouter([
 ])
 
 const Routes = () =>{
-    return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
+    
+    const data = useSelector(state => state.AuthReducer);
+
+    console.log("state token", data.StateToken)
+    
+    if(data.StateToken){
+        return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
+    }
+
+    return <RouterProvider router={auth_router} fallbackElement={<p>Loading...</p>} />;
 }
 
 export default Routes;
