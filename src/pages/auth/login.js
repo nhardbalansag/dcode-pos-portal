@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useDispatch } from "react-redux";
 
 import {
   InputComp,
@@ -7,8 +8,11 @@ import {
 } from '../../components/_index'
 
 import * as auth from '../../middleware/auth/auth.api'
+import * as AuthAction from '../../store/auth/authAction'
 
 const Login = () => {
+
+  const dispatch = useDispatch()
 
   const LoginUser = async () =>{
 
@@ -18,22 +22,23 @@ const Login = () => {
     }
 
     await auth.LoginUser(requestBody).then((result) =>{
-      console.log(result)
+
+      var token = result.data.token
+      var userInformation = result.data.data
+
+      dispatch(AuthAction.LoginUser(token, userInformation))
+      
     }).catch((err) =>{
       console.log(err)
     })
   }
-
-  useEffect(() =>{
-    LoginUser()
-  },[]) 
 
   const _form = () =>{
     return(
       <div>
         <InputComp/>
         <InputComp isText={false}/>
-        <ButtonComp title='Login'/>
+        <ButtonComp onPress={() => LoginUser()} title='Login'/>
       </div>
     )
   }

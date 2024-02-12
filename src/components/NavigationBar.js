@@ -4,7 +4,7 @@ import {
     IconArrowDownUp
 } from '../icons/_index'
 
-export default function NavigationBar({brandTitle = "DCODE"}) {
+export default function NavigationBar({brandTitle = "DCODE", logout = () => console.log("hello world")}) {
   return (
     <div className="navbar bg-base-100">
         <div className="flex-none">
@@ -23,7 +23,7 @@ export default function NavigationBar({brandTitle = "DCODE"}) {
                             Action
                         </summary>
                         <ul className="p-2 bg-base-100 rounded-t-none">
-                            <li><a>Logout</a></li>
+                            <li><a onClick={logout}>Logout</a></li>
                         </ul>
                     </details>
                 </li>
