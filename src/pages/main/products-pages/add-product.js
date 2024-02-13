@@ -26,9 +26,9 @@ const AddProduct = () => {
         } 
         width='p-8 mb-3 w-full shadow-xl'>
         <form>
-          <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-12">
-              <div class="mt-10 gap-5 grid grid-cols-2">
+          <div className="space-y-12">
+            <div className="border-b border-gray-900/10 pb-12">
+              <div className="mt-10 gap-5 grid grid-cols-2">
                 <div>
                   <InputComp/>
                 </div>
@@ -38,14 +38,14 @@ const AddProduct = () => {
                 </div>
 
                 <div >
-                  <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
+                  <label for="country" className="block text-sm font-medium leading-6 text-gray-900">Country</label>
                   <SelectComp/>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-6 flex items-center justify-end gap-x-6">
+          <div className="mt-6 flex items-center justify-end gap-x-6">
             <ButtonComp/>
           </div>
         </form>

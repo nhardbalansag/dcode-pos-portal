@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 
 import {useSelector} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import {
     Login,
@@ -146,8 +145,6 @@ const router = createBrowserRouter([
 const Routes = () =>{
     
     const data = useSelector(state => state.AuthReducer);
-
-    console.log("state token", data.StateToken)
     
     if(data.StateToken){
         return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;

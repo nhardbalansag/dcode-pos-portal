@@ -27,7 +27,7 @@ export default function DrawerItemComp({itemTitle = "title 1", route = '/', inne
   }
 
   useEffect(() =>{
-    console.log(getToggle)
+    // console.log(getToggle)
   }, [getToggle])
   
   return (
