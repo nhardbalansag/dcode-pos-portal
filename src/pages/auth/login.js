@@ -7,7 +7,7 @@ import {
   CardComp
 } from '../../components/_index'
 
-import * as auth from '../../middleware/auth/auth.api'
+import * as auth from '../../services/modules/auth/auth.api'
 import * as AuthAction from '../../store/auth/authAction'
 
 const Login = () => {

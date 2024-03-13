@@ -16,10 +16,10 @@ const rowData = [
     ]
 ]
 
-export default function DaisyTable({headers = headersData, dataRow = rowData, enableButton = false, actionContent = <></>}) {
+export default function DaisyTable({children, headers = headersData, dataRow = rowData, enableButton = false}) {
   return (
     <div className="px-2 overflow-x-auto">
-        <div className='flex flex-row items-center'>
+        <div className='flex flex-row items-end'>
             <InputComp label='search'/>
             <ButtonComp className='ml-3 btn-primary' title='search'/>
         </div>
@@ -34,28 +34,10 @@ export default function DaisyTable({headers = headersData, dataRow = rowData, en
                 </tr>
             </thead>
             <tbody>
-                {/* row 1 */}
-                    {dataRow.map((item_row, index_row) =>
-                        <tr key={index_row}>
-                            {item_row.map((item_row_data, index_row_data) =>
-                                <th key={index_row_data} className='font-normal text-center capitalize '>{item_row_data}</th>
-                            )}
-                            {
-                                enableButton 
-                                ? 
-                                    <th>
-                                        <div className='flex flex-row items-center justify-center'>{actionContent}</div>
-                                    </th> 
-                                : <></>
-                            }
-                        </tr>
-                    )}
-                    <tr>
-                        <th></th>
-                    </tr>
+                {children}
             </tbody>
         </table>
-        <div className="join">
+        <div className="join mt-5">
             <button className="join-item btn">«</button>
             <button className="join-item btn">Page 22</button>
             <button className="join-item btn">»</button>

@@ -25,7 +25,8 @@ import {
     Stores,
     CrewIndex,
     CrewPage,
-    AddCrew
+    AddCrew,
+    UpdateStore
 } from '../pages/_index'
 
 const auth_router = createBrowserRouter([
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
                     {   
                         path:"add-store",
                         element: <AddStore/>,
+                    },
+                    {   
+                        path:"update-store",
+                        element: <UpdateStore/>,
                     }
                 ]
             },

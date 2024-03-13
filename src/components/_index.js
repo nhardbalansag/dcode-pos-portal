@@ -11,6 +11,7 @@ import SelectComp from "./SelectComp";
 import PageHeaderTitle from "./PageHeaderTitle";
 import PageWrapper from "./PageWrapper";
 import DashboardStatusCard from "./DashboardStatusCard";
+import AlertMessage from "./AlertMessage";
 
 export {
     InputComp,
@@ -25,5 +26,6 @@ export {
     SelectComp,
     PageHeaderTitle,
     PageWrapper,
-    DashboardStatusCard
+    DashboardStatusCard,
+    AlertMessage
 }

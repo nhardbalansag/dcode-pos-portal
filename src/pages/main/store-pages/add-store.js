@@ -6,14 +6,15 @@ import {
   SelectComp,
   ButtonComp,
   CardComp,
-  PageHeaderTitle
+  PageHeaderTitle,
+  AlertMessage
 } from '../../../components/_index'
 
 import {
   IconStore,
 } from '../../../icons/_index'
 
-import * as auth from '../../../middleware/auth/auth.api'
+import * as store from '../../../services/modules/store/store.api'
 
 const AddStore = () => {
 
@@ -25,6 +26,9 @@ const AddStore = () => {
   const [getStoreAddress, setStoreAddress] = useState("")
   const [getStoreStatus, setStoreStatus] = useState("")
 
+  const [getRequestStatus, setRequestStatus] = useState(false)
+  const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
+
   const createStore = async() =>{
 
     const requestBody = {
@@ -35,10 +39,14 @@ const AddStore = () => {
       "store_status": getStoreStatus
     }
 
-    await auth.CreateStore(requestBody, data.StateToken).then((result) =>{
+    await store.CreateStore(requestBody, data.StateToken).then((result) =>{
       console.log(result)
+      setRequestStatus(true)
+      setRequestStatusMessage("success")
     }).catch((err) =>{
       console.log(err)
+      setRequestStatus(false)
+      setRequestStatusMessage(err)
     })
   }
 
@@ -54,8 +62,9 @@ const AddStore = () => {
         width='p-8 mb-3 w-full shadow-xl'
       >
           <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
-              <div className="mt-10 gap-5 grid grid-cols-2">
+            <AlertMessage status={getRequestStatus} showStatus={getRequestStatus} message={getRequestStatusMessage}/>
+            <div className="pb-12 border-b border-gray-900/10">
+              <div className="grid grid-cols-2 gap-5 mt-10">
                 <div>
                   <InputComp 
                     label='Store Name' 
@@ -99,8 +108,8 @@ const AddStore = () => {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            <ButtonComp onPress={() => createStore()}/>
+          <div className="flex items-center justify-end mt-6 gap-x-6">
+            <ButtonComp title='Create' onPress={() => createStore()}/>
           </div>
       </CardComp>
     </div>
