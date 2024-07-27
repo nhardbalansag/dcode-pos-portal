@@ -19,6 +19,7 @@ import CrewIndex from './main/crew-pages/crew-index'
 import CrewPage from './main/crew-pages/crew'
 import AddCrew from './main/crew-pages/add-crew'
 import UpdateStore from './main/store-pages/update-store'
+import UpdateCrew from './main/crew-pages/update-crew'
 
 export {
     Login,
@@ -41,5 +42,6 @@ export {
     CrewIndex,
     CrewPage,
     AddCrew,
-    UpdateStore
+    UpdateStore,
+    UpdateCrew
 }
