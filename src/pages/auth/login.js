@@ -17,14 +17,14 @@ const Login = () => {
   const LoginUser = async () =>{
 
     const requestBody = {
-      "username": "nhard",
-      "password": "helloworld"
+      "email": "admin@email.com",
+      "password": "admin"
     }
 
     await auth.LoginUser(requestBody).then((result) =>{
 
-      var token = result.data.token
-      var userInformation = result.data.data
+      var token = result.data.data.token
+      var userInformation = result.data.data.user
 
       dispatch(AuthAction.LoginUser(token, userInformation))
       

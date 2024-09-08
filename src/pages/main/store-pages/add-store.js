@@ -36,7 +36,7 @@ const AddStore = () => {
       "store_description": getStoreDescription,
       "store_contact_number": getStoreContactNumber,
       "store_address": getStoreAddress,
-      "store_status": getStoreStatus
+      "m_statuses_id": 1
     }
 
     await store.CreateStore(requestBody, data.StateToken).then((result) =>{

@@ -28,7 +28,7 @@ const Stores = () => {
   const GetAllStore = async() =>{
     await store.GetAllStore(data.StateToken).then((result) =>{
       if(result.status){
-        setStoreTableData(result.data.data)
+        setStoreTableData(result.data.data.data)
       }
     }).catch((err) =>{
       console.log(err)
@@ -100,12 +100,12 @@ const Stores = () => {
                       <tr key={index_row}>
                           <th className='font-normal text-center capitalize '>{index_row + 1}</th>
                           <th className='font-normal text-center capitalize '>{item_row.store_name}</th>
-                          <th className='font-normal text-center capitalize '>{item_row.store_status}</th>
+                          <th className='font-normal text-center capitalize '>{item_row.statuses_data.status_name}</th>
                           <th className='font-normal text-center capitalize '>{item_row.store_description}</th>
                           <th className='font-normal text-center capitalize '>{item_row.store_contact_number}</th>
                           <th className='font-normal text-center capitalize '>{item_row.store_address}</th>
-                          <th className='font-normal text-center capitalize '>{item_row.date_created}</th>
-                          <th className='font-normal text-center capitalize '>{item_row.date_updated}</th>
+                          <th className='font-normal text-center capitalize '>{item_row.created_at}</th>
+                          <th className='font-normal text-center capitalize '>{item_row.updated_at}</th>
 
                           <th>
                             <div className='flex flex-row items-center justify-center'>

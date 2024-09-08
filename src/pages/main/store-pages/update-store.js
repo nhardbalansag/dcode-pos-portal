@@ -41,8 +41,7 @@ function UpdateStore() {
           "store_description": getStoreDescription,
           "store_contact_number": getStoreContactNumber,
           "store_address": getStoreAddress,
-          "store_status": getStoreStatus,
-          "isDeleted": 0,
+          "m_statuses_id": getStoreStatus,
           "id": param_store,
         }
     
@@ -58,15 +57,20 @@ function UpdateStore() {
     }
 
     const GetStoreData = async(id) =>{
-        await store.GrabStore(data.StateToken, id).then((result) =>{
+
+        const requestBody = {
+            "id": id
+        }
+
+        await store.GrabStore(data.StateToken, requestBody).then((result) =>{
             if(result.status){
-                var res = result.data.data[0]
+                var res = result.data.data
                 
                 setStoreName(res.store_name)
                 setStoreDescription(res.store_description)
                 setStoreContactNumber(res.store_contact_number)
                 setStoreAddress(res.store_address)
-                setStoreStatus(res.store_status)
+                setStoreStatus(res.statuses_data.status_name)
             }
         }).catch((err) =>{
             console.log(err)

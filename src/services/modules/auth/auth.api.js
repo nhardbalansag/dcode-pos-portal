@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://localhost:7021/api/'
+const baseUrl = 'http://127.0.0.1:8000/api/'
 
 export const LoginUser = async (reqBody) => {
     return await axios({ 
@@ -8,7 +8,7 @@ export const LoginUser = async (reqBody) => {
             'Content-Type': 'application/json',
         },
         method: 'POST', 
-        url: `${baseUrl}token/LoginUser`, 
+        url: `${baseUrl}login`, 
         data: reqBody
     });
 }
