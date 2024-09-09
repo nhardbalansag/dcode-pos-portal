@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux';
 
 import {
@@ -15,6 +15,7 @@ import {
 } from '../../../icons/_index'
 
 import * as store from '../../../services/modules/store/store.api'
+import * as statuses from '../../../services/modules/status/status.api'
 
 const AddStore = () => {
 
@@ -25,6 +26,7 @@ const AddStore = () => {
   const [getStoreContactNumber, setStoreContactNumber] = useState("")
   const [getStoreAddress, setStoreAddress] = useState("")
   const [getStoreStatus, setStoreStatus] = useState("")
+  const [getStatusData, setStatusData] = useState()
 
   const [getRequestStatus, setRequestStatus] = useState(false)
   const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
@@ -36,7 +38,7 @@ const AddStore = () => {
       "store_description": getStoreDescription,
       "store_contact_number": getStoreContactNumber,
       "store_address": getStoreAddress,
-      "m_statuses_id": 1
+      "m_statuses_id": getStoreStatus
     }
 
     await store.CreateStore(requestBody, data.StateToken).then((result) =>{
@@ -49,6 +51,21 @@ const AddStore = () => {
       setRequestStatusMessage(err)
     })
   }
+
+  const GetStatusesData = async() =>{
+    await statuses.GetAllStatuses(data.StateToken).then((result) =>{
+        if(result.status){
+            var res = result.data.data
+            setStatusData(res)
+        }
+    }).catch((err) =>{
+        console.log(err)
+    })
+  }
+
+  useEffect(() =>{
+    GetStatusesData()
+  },[])
 
   return (
     <div>
@@ -100,8 +117,10 @@ const AddStore = () => {
                 <div >
                   <SelectComp
                   label='Status'
+                  hasOptionContent={true}
+                  options={getStatusData}
                   inputValue={getStoreStatus} 
-                  onChangeValue={(event) => setStoreStatus(event.target.value)}
+                  onChangeValue={(value) => setStoreStatus(value)}
                   />
                 </div>
               </div>

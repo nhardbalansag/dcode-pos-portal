@@ -16,6 +16,7 @@ import {
 } from '../../../icons/_index'
   
 import * as store from '../../../services/modules/store/store.api'
+import * as statuses from '../../../services/modules/status/status.api'
 
 function UpdateStore() {
 
@@ -28,9 +29,10 @@ function UpdateStore() {
     const [getStoreDescription, setStoreDescription] = useState("")
     const [getStoreContactNumber, setStoreContactNumber] = useState("")
     const [getStoreAddress, setStoreAddress] = useState("")
-    const [getStoreStatus, setStoreStatus] = useState("")
+    const [getStoreStatus, setStoreStatus] = useState()
 
     const [getRequestStatus, setRequestStatus] = useState(false)
+    const [getStatusData, setStatusData] = useState()
     const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
 
 
@@ -77,8 +79,20 @@ function UpdateStore() {
         })
     }
 
+    const GetStatusesData = async() =>{
+        await statuses.GetAllStatuses(data.StateToken).then((result) =>{
+            if(result.status){
+                var res = result.data.data
+                setStatusData(res)
+            }
+        }).catch((err) =>{
+            console.log(err)
+        })
+    }
+
     useEffect(() =>{
         GetStoreData(param_store)
+        GetStatusesData()
     },[])
 
     return (
@@ -131,8 +145,10 @@ function UpdateStore() {
                         <div >
                             <SelectComp
                             label='Status'
+                            hasOptionContent={true}
+                            options={getStatusData}
                             inputValue={getStoreStatus} 
-                            onChangeValue={(event) => setStoreStatus(event.target.value)}
+                            onChangeValue={(value) => setStoreStatus(value)}
                             />
                         </div>
                     </div>

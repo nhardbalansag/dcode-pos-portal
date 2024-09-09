@@ -31,8 +31,8 @@ export const UpdateToDelete = async (reqBody, token) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'PATCH', 
-        url: `${APIV1}Store/UpdateStore`,
+        method: 'POST', 
+        url: `${APIV1}delete`,
         data: reqBody
     });
 }

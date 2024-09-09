@@ -24,45 +24,48 @@ const Stores = () => {
 
   const [getStoreTableData, setStoreTableData] = useState([])
   const [getRefresh, setRefresh] = useState(false)
+  const [getUpdated, setUpdated] = useState(false)
 
   const GetAllStore = async() =>{
+    setRefresh(true)
     await store.GetAllStore(data.StateToken).then((result) =>{
       if(result.status){
         setStoreTableData(result.data.data.data)
       }
     }).catch((err) =>{
       console.log(err)
+      setRefresh(false)
     })
+    setRefresh(false)
   }
 
   const UpdateToDelete = async(row) =>{
 
-    setRefresh(true)
+    setUpdated(true)
 
     const requestBody = {
-      "isDeleted": 1,
-      "id": row.id,
-      "store_name": row.store_name,
-      "store_description": row.store_description,
-      "store_contact_number": row.store_contact_number,
-      "store_address": row.store_address,
-      "store_status": row.store_status
+      "id": row.id
     }
 
     await store.UpdateToDelete(requestBody, data.StateToken).then((result) =>{
       if(result.status){
         console.log(result)
       }
-      setRefresh(false)
+      setUpdated(false)
     }).catch((err) =>{
-      setRefresh(false)
+      setUpdated(false)
       console.log(err)
     })
   }
 
   useEffect(() =>{
     GetAllStore()
-  },[getRefresh])
+  },[])
+
+  useEffect(() =>{
+    GetAllStore()
+  },[getUpdated])
+
 
   return (
     <div>
@@ -81,14 +84,14 @@ const Stores = () => {
             children={
               getRefresh
               ?
-                <div class="flex flex-col gap-4 w-full">
-                  <div class="flex gap-4 items-center">
-                    <div class="flex flex-col gap-4">
-                      <div class="skeleton h-4 w-60"></div>
-                      <div class="skeleton h-4 w-60"></div>
+                <div className="flex flex-col gap-4 w-full">
+                  <div className="flex gap-4 items-center">
+                    <div className="flex flex-col gap-4">
+                      <div className="skeleton h-4 w-60"></div>
+                      <div className="skeleton h-4 w-60"></div>
                     </div>
                   </div>
-                  <div class="skeleton h-32 w-full"></div>
+                  <div className="skeleton h-32 w-full"></div>
                 </div>
               :
                 <DaisyTable 
