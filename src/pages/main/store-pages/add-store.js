@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux';
 
 import {
@@ -6,14 +6,16 @@ import {
   SelectComp,
   ButtonComp,
   CardComp,
-  PageHeaderTitle
+  PageHeaderTitle,
+  AlertMessage
 } from '../../../components/_index'
 
 import {
   IconStore,
 } from '../../../icons/_index'
 
-import * as auth from '../../../middleware/auth/auth.api'
+import * as store from '../../../services/modules/store/store.api'
+import * as statuses from '../../../services/modules/status/status.api'
 
 const AddStore = () => {
 
@@ -24,6 +26,10 @@ const AddStore = () => {
   const [getStoreContactNumber, setStoreContactNumber] = useState("")
   const [getStoreAddress, setStoreAddress] = useState("")
   const [getStoreStatus, setStoreStatus] = useState("")
+  const [getStatusData, setStatusData] = useState()
+
+  const [getRequestStatus, setRequestStatus] = useState(false)
+  const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
 
   const createStore = async() =>{
 
@@ -32,15 +38,37 @@ const AddStore = () => {
       "store_description": getStoreDescription,
       "store_contact_number": getStoreContactNumber,
       "store_address": getStoreAddress,
-      "store_status": getStoreStatus
+      "m_statuses_id": getStoreStatus
     }
 
-    await auth.CreateStore(requestBody, data.StateToken).then((result) =>{
+    setRequestStatus(true)
+    setRequestStatusMessage("Processing your request, please wait...")
+
+    await store.CreateStore(requestBody, data.StateToken).then((result) =>{
       console.log(result)
+      setRequestStatus(true)
+      setRequestStatusMessage("success")
     }).catch((err) =>{
       console.log(err)
+      setRequestStatus(true)
+      setRequestStatusMessage(err)
     })
   }
+
+  const GetStatusesData = async() =>{
+    await statuses.GetAllStatuses(data.StateToken).then((result) =>{
+        if(result.status){
+            var res = result.data.data
+            setStatusData(res)
+        }
+    }).catch((err) =>{
+        console.log(err)
+    })
+  }
+
+  useEffect(() =>{
+    GetStatusesData()
+  },[])
 
   return (
     <div>
@@ -54,8 +82,9 @@ const AddStore = () => {
         width='p-8 mb-3 w-full shadow-xl'
       >
           <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
-              <div className="mt-10 gap-5 grid grid-cols-2">
+            <AlertMessage status={getRequestStatus} showStatus={getRequestStatus} message={getRequestStatusMessage}/>
+            <div className="pb-12 border-b border-gray-900/10">
+              <div className="grid grid-cols-2 gap-5 mt-10">
                 <div>
                   <InputComp 
                     label='Store Name' 
@@ -91,16 +120,18 @@ const AddStore = () => {
                 <div >
                   <SelectComp
                   label='Status'
+                  hasOptionContent={true}
+                  options={getStatusData}
                   inputValue={getStoreStatus} 
-                  onChangeValue={(event) => setStoreStatus(event.target.value)}
+                  onChangeValue={(value) => setStoreStatus(value)}
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            <ButtonComp onPress={() => createStore()}/>
+          <div className="flex items-center justify-end mt-6 gap-x-6">
+            <ButtonComp title='Create' onPress={() => createStore()}/>
           </div>
       </CardComp>
     </div>

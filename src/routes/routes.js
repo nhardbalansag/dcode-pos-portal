@@ -25,7 +25,10 @@ import {
     Stores,
     CrewIndex,
     CrewPage,
-    AddCrew
+    AddCrew,
+    UpdateStore,
+    UpdateCrew,
+    UpdateProductCategory
 } from '../pages/_index'
 
 const auth_router = createBrowserRouter([
@@ -63,6 +66,10 @@ const router = createBrowserRouter([
                     {
                         path:"add-category",
                         element: <AddProductCategory/>,
+                    },
+                    {
+                        path:"update-category",
+                        element: <UpdateProductCategory/>,
                     }
                 ]
             },
@@ -91,6 +98,10 @@ const router = createBrowserRouter([
                     {   
                         path:"add-store",
                         element: <AddStore/>,
+                    },
+                    {   
+                        path:"update-store",
+                        element: <UpdateStore/>,
                     }
                 ]
             },
@@ -105,6 +116,10 @@ const router = createBrowserRouter([
                     {   
                         path:"add-crew",
                         element: <AddCrew/>,
+                    },
+                    {   
+                        path:"update-crew",
+                        element: <UpdateCrew/>,
                     }
                 ]
             },
