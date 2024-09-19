@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIV1 = 'http://127.0.0.1:8000/api/admin/store/'
+const APIV1 = 'http://pos.localtest.me/api/admin/store/'
 
 export const CreateStore = async (reqBody, token) => {
     return await axios({ 

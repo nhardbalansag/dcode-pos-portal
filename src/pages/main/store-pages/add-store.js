@@ -41,13 +41,16 @@ const AddStore = () => {
       "m_statuses_id": getStoreStatus
     }
 
+    setRequestStatus(true)
+    setRequestStatusMessage("Processing your request, please wait...")
+
     await store.CreateStore(requestBody, data.StateToken).then((result) =>{
       console.log(result)
       setRequestStatus(true)
       setRequestStatusMessage("success")
     }).catch((err) =>{
       console.log(err)
-      setRequestStatus(false)
+      setRequestStatus(true)
       setRequestStatusMessage(err)
     })
   }

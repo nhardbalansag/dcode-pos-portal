@@ -3,12 +3,13 @@ import React from 'react'
 export default function AlertMessage({message = "", status = true, showStatus = false}) {
   return (
     showStatus ?
-      <div role="alert" class={`alert ${status ? "alert-success" : "alert-warning" }`}>
+      // <div role="alert" class={`alert ${status ? "alert-success" : "alert-warning" }`}>
+      <div role="alert" class={`alert`}>
           <svg 
               xmlns="http://www.w3.org/2000/svg" 
               fill="none" 
               viewBox="0 0 24 24" 
-              class="stroke-current shrink-0 w-6 h-6">
+              class="stroke-info shrink-0 w-6 h-6">
                   <path 
                   stroke-linecap="round" 
                   stroke-linejoin="round" 

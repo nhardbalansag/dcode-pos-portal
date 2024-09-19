@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIV1 = 'https://localhost:7021/api/v1/'
+const APIV1 = 'http://pos.localtest.me/api/v1/'
 
 export const CreateUser = async (reqBody, token) => {
     return await axios({ 

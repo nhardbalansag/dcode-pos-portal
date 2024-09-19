@@ -1,27 +1,35 @@
 import axios from 'axios';
 
-const APIV1 = 'http://pos.localtest.me/api/v1/'
+const APIV1 = 'http://pos.localtest.me/api/admin/product-category/'
 
-export const CreateRole = async (reqBody, token) => {
+export const CreateProductCategory = async (reqBody, token) => {
+
+    var formdata = new FormData();
+
+    formdata.append("category_title", reqBody.category_title);
+    formdata.append("category_description", reqBody.category_description);
+    formdata.append("store_id", reqBody.store_id);
+    formdata.append('resources', reqBody.resources);
+
     return await axios({ 
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`
         },
         method: 'POST', 
-        url: `${APIV1}Store/CreateStore`, 
-        data: reqBody
+        url: `${APIV1}create`, 
+        data: formdata
     });
 }
 
-export const GetAllRole = async (token) => {
+export const GetAllProductCategory = async (token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         method: 'GET', 
-        url: `${APIV1}Roles/GetAllRoles`
+        url: `${APIV1}get-all`
     });
 }
 
@@ -31,31 +39,32 @@ export const UpdateToDelete = async (reqBody, token) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'PATCH', 
-        url: `${APIV1}Store/UpdateStore`,
+        method: 'POST', 
+        url: `${APIV1}delete`,
         data: reqBody
     });
 }
 
-export const UpdateRoleData = async (reqBody, token) => {
+export const UpdateProductCategory = async (reqBody, token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'PATCH', 
-        url: `${APIV1}Store/UpdateStore`,
+        method: 'POST', 
+        url: `${APIV1}update`,
         data: reqBody
     });
 }
 
-export const GrabRole = async (token, id) => {
+export const GetProductCategory = async (token, reqBody) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'GET', 
-        url: `${APIV1}Store/${id}`
+        method: 'POST', 
+        url: `${APIV1}get-product-category`,
+        data: reqBody
     });
 }

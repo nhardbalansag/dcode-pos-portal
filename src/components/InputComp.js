@@ -1,6 +1,14 @@
 import React from 'react'
 
-export default function InputComp({isText = true, label = "label", hasError = false, error = 'error handling here', inputValue = '', onChangeValue = () => console.log("hello world")}) {
+export default function InputComp({
+  isText = true, 
+  label = "label", 
+  isFileInput = false,
+  hasError = false, 
+  error = 'error handling here', 
+  inputValue = '', 
+  onChangeValue = () => console.log("hello world")
+}) {
 
   return (
     <div>
@@ -10,11 +18,11 @@ export default function InputComp({isText = true, label = "label", hasError = fa
             </div>
 
             <input 
-              value={inputValue} 
+              value={isFileInput ? null : inputValue} 
               onChange={onChangeValue} 
-              type={isText ? "text" : "password"} 
+              type={isText ? "text" : (isFileInput ? "file" : "password") } 
               placeholder="Type here" 
-              className={`input input-bordered w-full max-w-xs`} 
+              className={`${isFileInput ? 'file-input file-input-bordered' : 'input input-bordered'} w-full max-w-xs `} 
             />
 
             {
