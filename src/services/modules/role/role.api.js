@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIV1 = 'http://pos.localtest.me/api/v1/'
+const APIV1 = 'http://pos.localtest.me/api/admin/roles/'
 
 export const CreateRole = async (reqBody, token) => {
     return await axios({ 
@@ -9,53 +9,65 @@ export const CreateRole = async (reqBody, token) => {
             'Authorization': `Bearer ${token}`
         },
         method: 'POST', 
-        url: `${APIV1}Store/CreateStore`, 
+        url: `${APIV1}create`, 
         data: reqBody
     });
 }
 
-export const GetAllRole = async (token) => {
+export const GetAllRoleNoPaginate = async (token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         method: 'GET', 
-        url: `${APIV1}Roles/GetAllRoles`
+        url: `${APIV1}get-all-no-paginate`
     });
 }
 
-export const UpdateToDelete = async (reqBody, token) => {
-    return await axios({ 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        method: 'PATCH', 
-        url: `${APIV1}Store/UpdateStore`,
-        data: reqBody
-    });
-}
-
-export const UpdateRoleData = async (reqBody, token) => {
-    return await axios({ 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        method: 'PATCH', 
-        url: `${APIV1}Store/UpdateStore`,
-        data: reqBody
-    });
-}
-
-export const GrabRole = async (token, id) => {
+export const GetAllRolePaginated = async (token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         method: 'GET', 
-        url: `${APIV1}Store/${id}`
+        url: `${APIV1}get-all-paginated`
+    });
+}
+
+export const DeleteRole = async (reqBody, token) => {
+    return await axios({ 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'POST', 
+        url: `${APIV1}delete`,
+        data: reqBody
+    });
+}
+
+export const UpdateRole = async (reqBody, token) => {
+    return await axios({ 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'POST', 
+        url: `${APIV1}update`,
+        data: reqBody
+    });
+}
+
+export const GetRole = async (token, reqBody) => {
+    return await axios({ 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'POST', 
+        url: `${APIV1}get-role`,
+        data: reqBody
     });
 }

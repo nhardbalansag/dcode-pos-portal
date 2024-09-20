@@ -38,19 +38,22 @@ const Products = () => {
   const [getRequestStatus, setRequestStatus] = useState(false)
   const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
 
+  const PromptProcessing = (state = true, message = "Processing your request, please wait...") =>{
+    setRequestStatus(state)
+    setRequestStatusMessage(message)
+  }
+
   const GetTableDataContent = async() =>{
     setRefresh(true)
-    setRequestStatus(true)
-    setRequestStatusMessage("Processing your request, please wait...")
+    PromptProcessing()
     await product.GetAllProduct(data.StateToken).then((result) =>{
-      setRequestStatus(false)
+      PromptProcessing(false, "")
       if(result.status){
         setTableData(result.data.data.data)
       }
     }).catch((err) =>{
       setRefresh(false)
-      setRequestStatus(true)
-      setRequestStatusMessage(err.message)
+      PromptProcessing(true, err.message)
     })
     setRefresh(false)
   }
@@ -61,14 +64,12 @@ const Products = () => {
       "id": row.id
     }
 
-    setRequestStatus(true)
-    setRequestStatusMessage("Processing your request, please wait...")
+    PromptProcessing()
 
     await product.UpdateToDelete(requestBody, data.StateToken).then((result) =>{
       GetTableDataContent()
     }).catch((err) =>{
-      setRequestStatus(true)
-      setRequestStatusMessage(err.message)
+      PromptProcessing(true, err.message)
     })
   }
 
