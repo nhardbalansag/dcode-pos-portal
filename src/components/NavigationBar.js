@@ -1,4 +1,9 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
+import {
+    ButtonComp,
+  } from './_index'
 
 import {
     IconArrowDownUp
@@ -23,7 +28,11 @@ export default function NavigationBar({brandTitle = "DCODE", logout = () => cons
                             Action
                         </summary>
                         <ul className="p-2 bg-base-100 rounded-t-none">
-                            <li><a onClick={logout}>Logout</a></li>
+                            <li>
+                                <Link to={`/`}>
+                                    <a onClick={logout}>Logout</a>
+                                </Link>
+                            </li>
                         </ul>
                     </details>
                 </li>

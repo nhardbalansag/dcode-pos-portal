@@ -18,7 +18,8 @@ export const LogoutUser = () =>{
     return async (dispatch, getState) =>{
         dispatch({
             type        : REDUX_LOGOUT_USER,
-            StateToken  : null
+            StateToken  : null,
+            StateUserInformation : []
         }) 
     }
 }

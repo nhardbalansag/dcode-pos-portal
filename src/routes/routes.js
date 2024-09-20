@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom'
 
 import {
     createBrowserRouter,
@@ -53,7 +54,7 @@ const auth_router = createBrowserRouter([
     {
         path:"*",
         loader: () => ({ message: "Route not found!" }),
-        Component: NotFound,
+        Component: Login,
     },
 ])
 
@@ -182,7 +183,9 @@ const Routes = () =>{
         var token = await getItem(STORAGE_TOKEN)
         var userInformation = await getItem(STORAGE_USER_INFORMATION)
 
-        dispatch(AuthAction.LoginUser(token, userInformation))
+        if(token && userInformation){
+            dispatch(AuthAction.LoginUser(token, userInformation))
+        }
     }
 
     useEffect(() =>{
@@ -194,7 +197,6 @@ const Routes = () =>{
     if(data.StateToken){
         return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
     }
-
     return <RouterProvider router={auth_router} fallbackElement={<p>Loading...</p>} />;
 }
 

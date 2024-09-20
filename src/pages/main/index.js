@@ -13,12 +13,21 @@ import {
 import * as auth from '../../middleware/auth/auth.api'
 import * as AuthAction from '../../store/auth/authAction'
 
+import {
+  setItem,
+  clear
+} from '../../store/store-index'
+
 const MainIndex = () => {
 
   const dispatch = useDispatch()
 
   const LogoutUser = async () =>{
-    dispatch(AuthAction.LogoutUser())
+    await clear().then((result) =>{
+      dispatch(AuthAction.LogoutUser())
+    }).catch((err) =>{
+      console.log(err.message)
+    })
   }
 
   return (
