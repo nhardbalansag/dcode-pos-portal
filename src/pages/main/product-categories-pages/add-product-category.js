@@ -133,7 +133,7 @@ const AddProductCategory = () => {
                     inputValue={getstore_id} 
                     onChangeValue={(value) => setstore_id(value)}
                   />
-                </div>``
+                </div>
               </div>
             </div>
           </div>

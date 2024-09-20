@@ -46,14 +46,15 @@ function UpdateStore() {
           "m_statuses_id": getStoreStatus,
           "id": param_store,
         }
+
+        setRequestStatus(true)
+        setRequestStatusMessage("Processing your request, please wait...")
     
         await store.UpdateStoreData(requestBody, data.StateToken).then((result) =>{
-          console.log(result)
           setRequestStatus(true)
           setRequestStatusMessage("success")
         }).catch((err) =>{
-          console.log(err)
-          setRequestStatus(false)
+          setRequestStatus(true)
           setRequestStatusMessage(err)
         })
     }
@@ -64,7 +65,11 @@ function UpdateStore() {
             "id": id
         }
 
+        setRequestStatus(true)
+        setRequestStatusMessage("Processing your request, please wait...")
+
         await store.GrabStore(data.StateToken, requestBody).then((result) =>{
+            setRequestStatus(false)
             if(result.status){
                 var res = result.data.data
                 
@@ -72,21 +77,26 @@ function UpdateStore() {
                 setStoreDescription(res.store_description)
                 setStoreContactNumber(res.store_contact_number)
                 setStoreAddress(res.store_address)
-                setStoreStatus(res.statuses_data.status_name)
+                setStoreStatus(res.statuses_data.id)
             }
         }).catch((err) =>{
-            console.log(err)
+            setRequestStatus(true)
+            setRequestStatusMessage(err.message)
         })
     }
 
     const GetStatusesData = async() =>{
+        setRequestStatus(true)
+        setRequestStatusMessage("Processing your request, please wait...")
         await statuses.GetAllStatuses(data.StateToken).then((result) =>{
+            setRequestStatus(false)
             if(result.status){
                 var res = result.data.data
                 setStatusData(res)
             }
         }).catch((err) =>{
-            console.log(err)
+            setRequestStatus(true)
+            setRequestStatusMessage(err.message)
         })
     }
 

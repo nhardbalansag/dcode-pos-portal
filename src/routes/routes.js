@@ -1,9 +1,20 @@
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from "react-redux";
+
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 
 import {useSelector} from 'react-redux';
+
+import {
+    getItem
+} from '../store/store-index'
+
+import { STORAGE_TOKEN, STORAGE_USER_INFORMATION } from "../store/auth/authAction";
+
+import * as AuthAction from '../store/auth/authAction'
 
 import {
     Login,
@@ -28,7 +39,8 @@ import {
     AddCrew,
     UpdateStore,
     UpdateCrew,
-    UpdateProductCategory
+    UpdateProductCategory,
+    UpdateProduct
 } from '../pages/_index'
 
 const auth_router = createBrowserRouter([
@@ -84,6 +96,10 @@ const router = createBrowserRouter([
                     {   
                         path:"add-product",
                         element: <AddProduct/>,
+                    },
+                    {   
+                        path:"update-product",
+                        element: <UpdateProduct/>,
                     }
                 ]
             },
@@ -160,7 +176,21 @@ const router = createBrowserRouter([
 const Routes = () =>{
     
     const data = useSelector(state => state.AuthReducer);
-    
+    const dispatch = useDispatch()
+
+    const validateAccess = async() =>{
+        var token = await getItem(STORAGE_TOKEN)
+        var userInformation = await getItem(STORAGE_USER_INFORMATION)
+
+        dispatch(AuthAction.LoginUser(token, userInformation))
+    }
+
+    useEffect(() =>{
+        if(!data.StateToken){
+            validateAccess()
+        }
+    })
+
     if(data.StateToken){
         return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
     }

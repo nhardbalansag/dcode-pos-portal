@@ -21,6 +21,7 @@ import AddCrew from './main/crew-pages/add-crew'
 import UpdateStore from './main/store-pages/update-store'
 import UpdateCrew from './main/crew-pages/update-crew'
 import UpdateProductCategory from './main/product-categories-pages/update-product-categories'
+import UpdateProduct from './main/products-pages/update-product'
 
 export {
     Login,
@@ -45,5 +46,6 @@ export {
     AddCrew,
     UpdateStore,
     UpdateCrew,
-    UpdateProductCategory
+    UpdateProductCategory,
+    UpdateProduct
 }

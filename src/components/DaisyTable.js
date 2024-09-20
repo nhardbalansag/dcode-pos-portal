@@ -21,7 +21,7 @@ export default function DaisyTable({children, headers = headersData, dataRow = r
     <div className="px-2 overflow-x-auto">
         <div className='flex flex-row items-end'>
             <InputComp label='search'/>
-            <ButtonComp className='ml-3 btn-primary' title='search'/>
+            <ButtonComp className='ml-3 btn-primary' title={<><p className='text-white'>Search</p></>} />
         </div>
         <table className="table table-zebra">
             {/* head */}
