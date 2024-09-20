@@ -25,6 +25,18 @@ export const GetAllProductDetails = async (token) => {
     });
 }
 
+export const GetAllProductDetailsBaseInProduct = async (reqBody, token) => {
+    return await axios({ 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'POST', 
+        url: `${APIV1}get-product-details-by-product`,
+        data: reqBody
+    });
+}
+
 export const DeleteProductDetails = async (reqBody, token) => {
     return await axios({ 
         headers: {

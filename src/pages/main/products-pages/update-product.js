@@ -184,10 +184,13 @@ const UpdateProduct = () => {
   }
 
   const GetAllProductDetails = async() =>{
+    const requestBody = {
+      "product_id": param_store
+    }
     setRefresh(true)
     setProductDetailsRequestStatus(true)
     setProductDetailsRequestStatusMessage("Processing your request, please wait...")
-    await productDetails.GetAllProductDetails(data.StateToken).then((result) =>{
+    await productDetails.GetAllProductDetailsBaseInProduct(requestBody, data.StateToken).then((result) =>{
       setProductDetailsRequestStatus(false)
       setRefresh(false)
       if(result.status){
