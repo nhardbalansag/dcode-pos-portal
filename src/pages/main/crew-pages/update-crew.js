@@ -38,10 +38,11 @@ const UpdateCrew = () => {
     const [getuser_address, setuser_address] = useState()
     const [getuser_number, setuser_number] = useState()
     const [getemail, setemail] = useState()
-    const [getpassword, setpassword] = useState()
+    const [getpassword, setpassword] = useState(null)
     const [getstore_id, setstore_id] = useState()
     const [getroles_id, setroles_id] = useState()
     const [getm_statuses_id, setm_statuses_id] = useState()
+    const [getpin, setpin] = useState()
 
     const [getRequestStatus, setRequestStatus] = useState(false)
     const [getRequestStatusMessage, setRequestStatusMessage] = useState("unknown")
@@ -103,6 +104,7 @@ const UpdateCrew = () => {
             "store_id": getstore_id,
             "roles_id": getroles_id,
             "m_statuses_id": getm_statuses_id,
+            "pin": getpin,
             "id": param_store
         }
         PromptProcessing()
@@ -134,6 +136,7 @@ const UpdateCrew = () => {
                 setm_statuses_id(res.m_statuses_id)
                 setstore_id(res.store_id)
                 setroles_id(res.roles_id)
+                setpin(res.user_pin_data.pin)
             }
         }).catch((err) =>{
             PromptProcessing(true, err.message)
@@ -227,12 +230,21 @@ const UpdateCrew = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <p className="mt-6 text-lg leading-8 text-gray-400 capitalize">Initial password setup</p>
+                                    <div className='border-b border-gray-900/10 pb-12'>
+                                        <p className="mt-6 text-lg leading-8 text-gray-400 capitalize ">Initial password setup</p>
                                         <InputComp 
                                         label='Password'
                                         inputValue={getpassword} 
                                         onChangeValue={(event) => setpassword(event.target.value)}
+                                        />
+                                    </div>
+
+                                    <p className="mt-6 text-lg leading-8 text-gray-400 capitalize">Add Pin</p>
+                                    <div>
+                                        <InputComp 
+                                        label='Pin'
+                                        inputValue={getpin} 
+                                        onChangeValue={(event) => setpin(event.target.value)}
                                         />
                                     </div>
                                 </div>
