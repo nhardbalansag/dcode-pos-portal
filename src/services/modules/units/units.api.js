@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const APIV1 = 'http://pos.localtest.me/api/admin/roles/'
+const APIV1 = 'http://pos.localtest.me/api/admin/units/'
 
-export const CreateRole = async (reqBody, token) => {
+export const AddUnit = async (reqBody, token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
@@ -14,29 +14,18 @@ export const CreateRole = async (reqBody, token) => {
     });
 }
 
-export const GetAllRoleNoPaginate = async (token) => {
+export const GetAllUnit = async (token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         method: 'GET', 
-        url: `${APIV1}get-all-no-paginate`
+        url: `${APIV1}get-all`
     });
 }
 
-export const GetAllRolePaginated = async (token) => {
-    return await axios({ 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        method: 'GET', 
-        url: `${APIV1}get-all-paginated`
-    });
-}
-
-export const DeleteRole = async (reqBody, token) => {
+export const DeleteUnit = async (reqBody, token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +37,7 @@ export const DeleteRole = async (reqBody, token) => {
     });
 }
 
-export const UpdateRole = async (reqBody, token) => {
+export const UpdateUnit = async (reqBody, token) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
@@ -60,14 +49,14 @@ export const UpdateRole = async (reqBody, token) => {
     });
 }
 
-export const GetRole = async (token, reqBody) => {
+export const GetUnit = async (token, reqBody) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         method: 'POST', 
-        url: `${APIV1}get-role`,
+        url: `${APIV1}get-store`,
         data: reqBody
     });
 }

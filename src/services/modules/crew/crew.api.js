@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIV1 = 'http://pos.localtest.me/api/v1/'
+const APIV1 = 'http://pos.localtest.me/api/admin/user-management/'
 
 export const CreateUser = async (reqBody, token) => {
     return await axios({ 
@@ -9,7 +9,7 @@ export const CreateUser = async (reqBody, token) => {
             'Authorization': `Bearer ${token}`
         },
         method: 'POST', 
-        url: `${APIV1}User/CreateUser`, 
+        url: `${APIV1}create`, 
         data: reqBody
     });
 }
@@ -21,18 +21,18 @@ export const GetAllCrew = async (token) => {
             'Authorization': `Bearer ${token}`
         },
         method: 'GET', 
-        url: `${APIV1}User`
+        url: `${APIV1}get-all`
     });
 }
 
-export const UpdateToDelete = async (reqBody, token) => {
+export const GetUsers = async (token, reqBody) => {
     return await axios({ 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'PATCH', 
-        url: `${APIV1}User/UpdateUser`,
+        method: 'POST', 
+        url: `${APIV1}get-user`,
         data: reqBody
     });
 }
@@ -43,19 +43,8 @@ export const UpdateUser = async (reqBody, token) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        method: 'PATCH', 
-        url: `${APIV1}User/UpdateUser`,
+        method: 'POST', 
+        url: `${APIV1}update`,
         data: reqBody
-    });
-}
-
-export const GrabUser = async (token, id) => {
-    return await axios({ 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        method: 'GET', 
-        url: `${APIV1}User/${id}`
     });
 }

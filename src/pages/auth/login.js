@@ -7,6 +7,13 @@ import {
   CardComp
 } from '../../components/_index'
 
+import {
+  setItem,
+  clear
+} from '../../store/store-index'
+
+import { STORAGE_USER_INFORMATION, STORAGE_TOKEN } from '../../store/auth/authAction';
+
 import * as auth from '../../services/modules/auth/auth.api'
 import * as AuthAction from '../../store/auth/authAction'
 
@@ -25,6 +32,9 @@ const Login = () => {
 
       var token = result.data.data.token
       var userInformation = result.data.data.user
+
+      setItem(STORAGE_TOKEN, token)
+      setItem(STORAGE_USER_INFORMATION, userInformation)
 
       dispatch(AuthAction.LoginUser(token, userInformation))
       

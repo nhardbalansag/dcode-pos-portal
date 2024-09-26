@@ -1,9 +1,21 @@
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom'
+
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 
 import {useSelector} from 'react-redux';
+
+import {
+    getItem
+} from '../store/store-index'
+
+import { STORAGE_TOKEN, STORAGE_USER_INFORMATION } from "../store/auth/authAction";
+
+import * as AuthAction from '../store/auth/authAction'
 
 import {
     Login,
@@ -28,7 +40,8 @@ import {
     AddCrew,
     UpdateStore,
     UpdateCrew,
-    UpdateProductCategory
+    UpdateProductCategory,
+    UpdateProduct
 } from '../pages/_index'
 
 const auth_router = createBrowserRouter([
@@ -41,7 +54,7 @@ const auth_router = createBrowserRouter([
     {
         path:"*",
         loader: () => ({ message: "Route not found!" }),
-        Component: NotFound,
+        Component: Login,
     },
 ])
 
@@ -84,6 +97,10 @@ const router = createBrowserRouter([
                     {   
                         path:"add-product",
                         element: <AddProduct/>,
+                    },
+                    {   
+                        path:"update-product",
+                        element: <UpdateProduct/>,
                     }
                 ]
             },
@@ -160,11 +177,26 @@ const router = createBrowserRouter([
 const Routes = () =>{
     
     const data = useSelector(state => state.AuthReducer);
-    
+    const dispatch = useDispatch()
+
+    const validateAccess = async() =>{
+        var token = await getItem(STORAGE_TOKEN)
+        var userInformation = await getItem(STORAGE_USER_INFORMATION)
+
+        if(token && userInformation){
+            dispatch(AuthAction.LoginUser(token, userInformation))
+        }
+    }
+
+    useEffect(() =>{
+        if(!data.StateToken){
+            validateAccess()
+        }
+    })
+
     if(data.StateToken){
         return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
     }
-
     return <RouterProvider router={auth_router} fallbackElement={<p>Loading...</p>} />;
 }
 

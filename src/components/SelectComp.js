@@ -10,6 +10,11 @@ export default function SelectComp({label = 'test', module = null, hasOptionCont
     setInputValueData(event.target.value);
     onChangeValue(event.target.value)
   };
+
+  useEffect(() =>{
+    setInputValueData(inputValue);
+    onChangeValue(inputValue)
+  })
   
   return (
     <label className="w-full max-w-xs form-control">
@@ -29,7 +34,17 @@ export default function SelectComp({label = 'test', module = null, hasOptionCont
                       : (
                           item.hasOwnProperty("role_title") 
                           ? item.role_title 
-                          : (item.hasOwnProperty("status_name") ?  item.status_name : item )
+                          : 
+                            (
+                              item.hasOwnProperty("status_name") 
+                              ? item.status_name 
+                              : 
+                                (
+                                  item.hasOwnProperty("category_title") 
+                                  ? item.category_title  
+                                  : (item.hasOwnProperty("unit_title") ? `${item.unit_title} (${item.unit_code})` : item )
+                                )
+                            )
                         )
                     : item
                   }
